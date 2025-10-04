@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gatos Aleatórios 🐱</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f3f3f3;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #444;
+    }
+
+    button {
+      background: #ff9800;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #e68900;
+    }
+
+    img {
+     margin-top: 30px;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+<body>
+  <h1>Gerador de Imagens Aleatórias de Gato 🐾</h1>
+  <button onclick="mostrarGato()">Clique aqui</button>
+  <div id="imagem"></div>
+
+  <script>
+    async function mostrarGato() {
+      const resposta = await fetch("https://api.thecatapi.com/v1/images/search");
+      const dados = await resposta.json();
+      const urlImagem = dados[0].url;
+
+      document.getElementById("imagem").innerHTML =
+        `<img src="${urlImagem}" alt="Gato fofo">`;
+    }
+  </script>
+</body>
+</html>
